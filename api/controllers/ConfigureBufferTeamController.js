@@ -3,15 +3,23 @@ module.exports = {
     console.log('-----req', req.body);
     try {
       const { challengeName, teams } = req.body;
-      if (!challengeName || !teams) {
-        return res.status(404).json({ message: 'challenge Name & Teams are required' });
+      if (!challengeName) {
+        return res.status(404).json({ message: 'challenge Name are required' });
+      }
+      if (!teams.length > 0) {
+        return res.status(400).json({ message: 'Please Select the team' });
+      }
+
+      const existingChallenge = await ConfigureBufferTeam.findOne({ challengeName });
+
+      if (existingChallenge) {
+        return res.status(400).json({ message: 'Challenge name already exists. Please choose a different name.' });
       }
 
       if (!Array.isArray(teams)) {
         return res.badRequest({ error: 'Teams should be an array of team objects' });
       }
 
-      // Create the new challenge record
       const newChallenge = await ConfigureBufferTeam.create({ challengeName, teams }).fetch();
 
       return res.json(newChallenge);

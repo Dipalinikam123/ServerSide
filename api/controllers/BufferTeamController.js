@@ -13,6 +13,11 @@ module.exports = {
         return res.status(404).json({ message: 'Team Name is required' });
       }
 
+      const existingTeamName = await BufferTeam.findOne({ teamName: teamName });
+      if (existingTeamName) {
+        return res.status(400).json({ message: 'Team name already exists. Please choose a different name.' });
+      }
+
       const fileStream = req.file('teamImage');
 
       if (!fileStream) {
@@ -65,7 +70,9 @@ module.exports = {
       if (!team) {
         return res.status(404).json({ message: 'Team not found' });
       }
-
+      if (!req.body.teamName) {
+        return res.status(404).json({ message: 'Team Name is Required' });
+      }
       if (req.body.teamName) {
         await BufferTeam.updateOne({ id }).set({ teamName: req.body.teamName });
       }

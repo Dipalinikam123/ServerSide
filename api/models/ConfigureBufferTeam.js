@@ -3,6 +3,7 @@ module.exports = {
     challengeName: {
       type: 'string',
       required: true,
+      unique: true
     },
     teams: {
       type: 'json',
