@@ -22,7 +22,7 @@ module.exports = {
 
       const newChallenge = await ConfigureBufferTeam.create({ challengeName, teams }).fetch();
 
-      return res.json(newChallenge);
+      return res.status(200).json(newChallenge);
     } catch (error) {
       return res.serverError(error);
     }

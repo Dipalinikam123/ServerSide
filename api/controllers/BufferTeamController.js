@@ -21,7 +21,7 @@ module.exports = {
       const fileStream = req.file('teamImage');
 
       if (!fileStream) {
-        return res.badRequest('No file provided.');
+        return res.status(404).json({ message: 'Profile is required' });
       }
 
       fileStream.upload({}, async (err, uploadedFiles) => {
@@ -31,7 +31,7 @@ module.exports = {
         }
 
         if (uploadedFiles.length === 0) {
-          return res.badRequest('No file was uploaded.');
+          return res.status(404).json({ message: 'Profile is required' });
         }
 
         const filePath = uploadedFiles[0].fd;

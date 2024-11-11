@@ -26,6 +26,8 @@ module.exports.routes = {
   'DELETE /removeTeam/:id': 'BufferTeamController.removeTeam',
   'POST /configureBufferTeam': 'ConfigureBufferTeamController.addSelectedTeam',
   'GET /getConfigureBufferTeam': 'ConfigureBufferTeamController.getSelectedTeam',
+  'POST /userSignin': 'UserController.register',
+  'POST /userSignup': 'UserController.login',
 
 
   /***************************************************************************
