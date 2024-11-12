@@ -17,7 +17,7 @@ module.exports = {
       }
 
       if (!Array.isArray(teams)) {
-        return res.badRequest({ error: 'Teams should be an array of team objects' });
+        return res.json({ message: 'Teams should be an array of team objects' });
       }
 
       const newChallenge = await ConfigureBufferTeam.create({ challengeName, teams }).fetch();

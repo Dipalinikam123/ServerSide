@@ -28,6 +28,7 @@ module.exports.routes = {
   'GET /getConfigureBufferTeam': 'ConfigureBufferTeamController.getSelectedTeam',
   'POST /userSignin': 'UserController.register',
   'POST /userSignup': 'UserController.login',
+  'GET /userProfile': 'UserController.userProfile',
 
 
   /***************************************************************************

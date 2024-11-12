@@ -41,7 +41,6 @@ module.exports = {
           teamName,
           teamImage: uploadResult.url
         }).fetch();
-        // sails.log('---Cloudinary Upload Result:', uploadResult);
         return res.ok({ message: 'Team Create successfully', result: team });
 
       });
@@ -69,6 +68,9 @@ module.exports = {
       const team = await BufferTeam.findOne({ id });
       if (!team) {
         return res.status(404).json({ message: 'Team not found' });
+      }
+      if (team.teamName === req.body.teamName) {
+        return res.status(404).json({ message: 'Team Name already exist' });
       }
       if (!req.body.teamName) {
         return res.status(404).json({ message: 'Team Name is Required' });
