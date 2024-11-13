@@ -33,6 +33,10 @@ module.exports = {
     token: {
       type: 'string',
       defaultsTo: '',
+    },
+    resetToken: {
+      type: 'string',
+      defaultsTo: '',
     }
   },
 

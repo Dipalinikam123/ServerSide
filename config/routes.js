@@ -29,6 +29,9 @@ module.exports.routes = {
   'POST /userSignin': 'UserController.register',
   'POST /userSignup': 'UserController.login',
   'GET /userProfile': 'UserController.userProfile',
+  'POST /resetPassword': 'UserController.forgetPassword',
+  'GET /verify-reset-token/:id/:token': 'UserController.verifyResetToken',
+  'POST /verify-reset-token/:id/:token': 'UserController.resetPassword',
 
 
   /***************************************************************************
